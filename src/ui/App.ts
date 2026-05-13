@@ -53,7 +53,8 @@ const shortLabel = (n: string): string => CURVE_SHORT[n] ?? n;
 const SlotToggle = (): Renderable => html`
   <div class="slot-toggle" role="tablist">
     ${(["A", "B"] as const).map((slot) => html`
-      <button type="button"
+      <button type="button" data-slot=${slot}
+              aria-pressed=${activeSlot.value === slot ? "true" : "false"}
               class=${`slot-btn ${activeSlot.value === slot ? "active" : ""}`}
               onClick=${() => (activeSlot.value = slot)}>${slot}</button>`)}
   </div>`;
