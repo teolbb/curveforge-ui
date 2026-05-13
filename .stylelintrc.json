@@ -1,0 +1,15 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "max-nesting-depth": 2,
+    "selector-max-class": 4,
+    "selector-max-compound-selectors": 3,
+    "no-descending-specificity": null,
+    "declaration-no-important": true,
+    "selector-pseudo-class-no-unknown": [true, { "ignorePseudoClasses": ["where", "is"] }],
+
+    "property-no-vendor-prefix": null,
+    "selector-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null
+  }
+}

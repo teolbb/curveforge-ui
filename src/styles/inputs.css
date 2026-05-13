@@ -1,0 +1,81 @@
+/* Shared form-control primitives: text-ish inputs (border, padding, focus
+   ring) and the segmented control. Range slider styling lives in range.css —
+   it's vendor-pseudo-element-heavy enough to warrant its own file. */
+
+.row-grid > input:not([type="range"], [type="checkbox"]),
+.range-row > input,
+.bp-input,
+.curve-trigger,
+.upload-meta + button {
+  background: var(--input-bg);
+  color: var(--fg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--r-md);
+  padding: 0.45rem 0.6rem;
+  font-size: var(--fs-body);
+  font-family: inherit;
+  width: 100%;
+  transition: border-color 0.12s;
+}
+
+:where(
+  .row-grid > input:not([type="range"], [type="checkbox"]),
+  .range-row > input,
+  .bp-input,
+  .curve-trigger
+):hover {
+  border-color: var(--muted);
+}
+
+:where(
+  .row-grid > input,
+  .range-row > input,
+  .bp-input
+):focus-visible {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Segmented control — used by Source picker and enum-typed params. */
+.segmented {
+  display: inline-flex;
+  padding: 2px;
+  background: var(--bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--r-md);
+  width: 100%;
+}
+
+.seg {
+  flex: 1;
+  height: 1.75rem;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: var(--fs-help);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: var(--r-sm);
+  transition: background 0.12s, color 0.12s;
+  padding: 0 0.55rem;
+}
+
+.seg:hover:not(:disabled) {
+  color: var(--fg);
+}
+
+.seg:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.seg.active {
+  background: var(--panel);
+  color: var(--fg);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+}
+
+.enum-segmented {
+  width: auto;
+}

@@ -1,0 +1,183 @@
+/* Audio preview transport, volume row, upload meta, primary buttons, and the
+   range-row (Low / to / High). All live in the right-hand Output panel. */
+
+.transport {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2);
+  height: 2.4rem;
+}
+
+.transport > .btn-primary {
+  flex: 1;
+  height: 100%;
+  padding: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.transport .play-icon {
+  font-size: 0.85em;
+}
+
+.icon-toggle {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--r-md);
+  color: var(--muted);
+  cursor: pointer;
+  width: 2.4rem;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.12s, background 0.12s, border-color 0.12s;
+}
+
+.icon-toggle:hover {
+  color: var(--fg);
+  border-color: var(--muted);
+}
+
+.icon-toggle[aria-pressed="true"] {
+  background: var(--fg);
+  color: var(--panel);
+  border-color: var(--fg);
+}
+
+.icon-toggle[aria-pressed="true"]::after {
+  content: "";
+}
+
+.volume-row {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) 4ch;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+.volume-icon {
+  color: var(--muted);
+  flex-shrink: 0;
+  justify-self: start;
+}
+
+.volume-row > output {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: var(--fs-value);
+  font-weight: 600;
+  color: var(--accent);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.btn-primary svg,
+.btn-primary .play-icon {
+  flex-shrink: 0;
+}
+
+.upload-meta {
+  margin: 0;
+  padding-left: 5.5rem;
+  font-size: var(--fs-help);
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.upload-meta.error {
+  color: var(--danger);
+  font-style: normal;
+}
+
+.row-grid {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-label);
+  color: var(--fg);
+}
+
+.row-grid > span:first-child {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.row-grid.checkbox-row {
+  grid-template-columns: auto 1fr;
+}
+
+.row-grid input[type="range"] {
+  padding: 0;
+  border: none;
+}
+
+/* Low / to / High frequency-range row. */
+.range-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.range-row > input {
+  padding: 0.4rem 0.5rem;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  flex: 1 1 0;
+  -moz-appearance: textfield;
+}
+
+.range-row > input::-webkit-outer-spin-button,
+.range-row > input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.range-sep,
+.range-unit {
+  font-size: var(--fs-help);
+  color: var(--muted);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: none;
+  border-radius: var(--r-md);
+  padding: 0.6rem 1rem;
+  font-size: var(--fs-body);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.12s, transform 0.04s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.download-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: var(--space-1);
+}

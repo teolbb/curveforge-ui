@@ -1,0 +1,89 @@
+/* Slider-row controls (label / range / value) and the breakpoints table that
+   transform params with kind='breakpoints' render. Both share the field-group
+   context, so they live together. */
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: minmax(8ch, max-content) minmax(0, 1fr) minmax(6ch, max-content);
+  gap: 0.55rem var(--space-3);
+  align-items: center;
+}
+
+.slider-row { display: contents; }
+
+.slider-row > label {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--fg);
+  cursor: help;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slider-row > output {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: var(--fs-value);
+  font-weight: 600;
+  text-align: right;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Breakpoints editor — two-column (Hz, dB) grid with row delete + add-row
+   button. Spans the full slider-row grid via grid-column: 1 / -1. */
+.breakpoints-table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border: 1px solid var(--input-border);
+  border-radius: var(--r-md);
+  padding: var(--space-2);
+  background: var(--bg);
+  grid-column: 1 / -1;
+}
+
+.bp-header,
+.bp-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.bp-header {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 var(--space-1);
+}
+
+.bp-col { text-align: center; }
+
+.bp-input {
+  border-radius: var(--r-sm);
+  padding: 0.3rem 0.4rem;
+  font-size: var(--fs-help);
+  font-family: ui-monospace, monospace;
+  text-align: right;
+}
+
+.bp-add {
+  background: transparent;
+  border: 1px dashed var(--input-border);
+  border-radius: var(--r-sm);
+  padding: 0.4rem;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: var(--fs-help);
+  font-family: inherit;
+  margin-top: var(--space-1);
+}
+
+.bp-add:hover {
+  color: var(--fg);
+  border-color: var(--muted);
+}

@@ -1,0 +1,153 @@
+/* Popover menus — the base-curve trigger and the "+ Add transform" picker
+   both use the same positioned-dropdown pattern, with menu-item children. */
+
+/* Base-curve trigger (the chip that opens the curve picker). */
+.curve-trigger-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.curve-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: auto;
+  padding: 0.4rem 0.55rem 0.4rem 0.5rem;
+  cursor: pointer;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.curve-trigger[aria-expanded="true"] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--input-bg));
+  color: var(--accent);
+}
+
+.trigger-spark {
+  width: 32px;
+  height: 14px;
+  opacity: 0.65;
+  flex-shrink: 0;
+}
+
+.curve-trigger[aria-expanded="true"] .trigger-spark { opacity: 1; }
+
+.trigger-caret {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.menu-curves {
+  left: auto;
+  right: 0;
+  top: calc(100% + 4px);
+  min-width: 180px;
+}
+
+.menu-curves .menu-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.32rem 0.5rem;
+}
+
+.menu-curves .menu-item-title { font-weight: 500; }
+.menu-curves .menu-item.active .menu-item-title { font-weight: 600; }
+
+.menu-curves .menu-item.active {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+}
+
+.menu-item-spark {
+  width: 100%;
+  height: 14px;
+  opacity: 0.55;
+}
+
+.menu-curves .menu-item.active .menu-item-spark { opacity: 1; }
+
+/* + Add transform — opens a vertical list of transforms to insert. */
+.add-transform-wrap {
+  position: relative;
+}
+
+.add-btn {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+}
+
+.add-btn[aria-expanded="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 20;
+  background: var(--panel);
+  border: 1px solid var(--input-border);
+  border-radius: var(--r-md);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 12%);
+  padding: 4px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu[hidden] {
+  display: none;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  padding: 0.4rem 0.55rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--fg);
+  text-align: left;
+}
+
+.menu-item + .menu-item { margin-top: 1px; }
+
+.menu-item:hover,
+.menu-item:focus-visible {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  outline: none;
+}
+
+.menu-item-title {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.menu-item-desc {
+  font-size: var(--fs-help);
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.field-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--fs-help);
+  line-height: 1.5;
+}

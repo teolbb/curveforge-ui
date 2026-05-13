@@ -1,0 +1,44 @@
+/* Document-level resets and the page header. Nothing component-specific. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  font-size: var(--fs-body);
+  line-height: 1.4;
+}
+
+main {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  margin: 0;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--fs-help);
+}
+
+.tagline a {
+  color: var(--accent);
+}

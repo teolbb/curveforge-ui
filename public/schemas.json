@@ -1,0 +1,374 @@
+{
+  "curveforge_version": "0.1.0",
+  "curves": [
+    {
+      "name": "harman",
+      "title": "Harman-style bass shelf",
+      "description": "First-order low-shelf bass boost with no treble adjustment. The community-standard Dirac target for music.",
+      "params": [
+        {
+          "name": "shelf_level",
+          "kind": "number",
+          "min": 0.0,
+          "max": 14.0,
+          "default": 6.0,
+          "step": 0.5,
+          "description": "Bass-shelf gain in dB. Typical values: 4-6 for critical listening, 6-8 for balanced music, 10-14 for cinema or bass-heavy use."
+        },
+        {
+          "name": "shelf_corner",
+          "kind": "number",
+          "min": 40.0,
+          "max": 300.0,
+          "default": 105.0,
+          "step": 5.0,
+          "description": "Shelf corner frequency in Hz. Higher values extend the shelf into mid-bass for a wider HT-style sound; lower values tighten the shelf to deep bass only."
+        }
+      ],
+      "citation": "Olive, S. E. & Welti, T. \u2014 Harman International AES research on listener preference for in-room loudspeaker response. See also Toole, F. E., Sound Reproduction (3rd ed., 2017), Routledge / AES Presents."
+    },
+    {
+      "name": "olive_welti_inroom",
+      "title": "Olive-Welti in-room (RR1_G family)",
+      "description": "Bass shelf plus linear downward tilt above 1 kHz. Tracks the Olive-Welti-McMullin RR1_G shape.",
+      "params": [
+        {
+          "name": "bass_shelf",
+          "kind": "number",
+          "min": 0.0,
+          "max": 10.0,
+          "default": 6.0,
+          "step": 0.5,
+          "description": "Low-shelf bass gain in dB. Olive, Welti & McMullin 2013 found preference for ~+6 dB."
+        },
+        {
+          "name": "bass_corner",
+          "kind": "number",
+          "min": 60.0,
+          "max": 250.0,
+          "default": 105.0,
+          "step": 1.0,
+          "description": "Low-shelf corner frequency in Hz (\u2248105 Hz to match the published RR1_G shape)."
+        },
+        {
+          "name": "treble_tilt",
+          "kind": "number",
+          "min": -2.0,
+          "max": 0.0,
+          "default": -1.0,
+          "step": 0.05,
+          "description": "Linear tilt above the anchor in dB/octave (negative = darker)."
+        },
+        {
+          "name": "tilt_anchor",
+          "kind": "number",
+          "min": 500.0,
+          "max": 2000.0,
+          "default": 1000.0,
+          "step": 5.0,
+          "description": "Frequency at which the tilt has 0 dB effect."
+        }
+      ],
+      "citation": "Olive, S. E., Welti, T., & McMullin, E. (2013). 'Listener Preferences for In-Room Loudspeaker and Headphone Target Responses.' AES 135th Convention, paper 8994. See also paper 8867 (AES 134th, 2013) for the RR1_G reference curve."
+    },
+    {
+      "name": "b_and_k",
+      "title": "Br\u00fcel & Kj\u00e6r 1974",
+      "description": "Flat bass plateau plus linear downward slope above the corner.",
+      "params": [
+        {
+          "name": "bass_level",
+          "kind": "number",
+          "min": 0.0,
+          "max": 6.0,
+          "default": 3.0,
+          "step": 0.5,
+          "description": "Bass plateau in dB (B&K original ~ 2.5 to 3 dB)."
+        },
+        {
+          "name": "bass_corner",
+          "kind": "number",
+          "min": 100.0,
+          "max": 400.0,
+          "default": 200.0,
+          "step": 5.0,
+          "description": "Frequency at which the plateau ends and the tilt begins."
+        },
+        {
+          "name": "treble_slope",
+          "kind": "number",
+          "min": -1.5,
+          "max": 0.0,
+          "default": -0.83,
+          "step": 0.05,
+          "description": "Downward slope above the bass corner in dB/octave (B&K \u2248 -0.83)."
+        }
+      ],
+      "citation": "Br\u00fcel & Kj\u00e6r Application Note 17-197 (1974), 'Relevant loudspeaker tests in studios in Hi-Fi dealers' demo rooms in the home etc., using 1/3 octave, pink-weighted, random noise.'"
+    },
+    {
+      "name": "toole_inroom",
+      "title": "Toole in-room",
+      "description": "Flat below ~500 Hz, gentle downward tilt above. Optional bass shelf.",
+      "params": [
+        {
+          "name": "tilt",
+          "kind": "number",
+          "min": -1.5,
+          "max": 0.0,
+          "default": -0.7,
+          "step": 0.05,
+          "description": "Downward tilt above tilt_corner in dB/octave (Toole: ~ -0.6 to -0.9)."
+        },
+        {
+          "name": "tilt_corner",
+          "kind": "number",
+          "min": 200.0,
+          "max": 2000.0,
+          "default": 500.0,
+          "step": 5.0,
+          "description": "Frequency above which the tilt applies; flat below."
+        },
+        {
+          "name": "bass_shelf",
+          "kind": "number",
+          "min": 0.0,
+          "max": 8.0,
+          "default": 0.0,
+          "step": 0.5,
+          "description": "Optional low-shelf bass gain in dB (Toole-neutral default = 0)."
+        },
+        {
+          "name": "bass_corner",
+          "kind": "number",
+          "min": 60.0,
+          "max": 300.0,
+          "default": 120.0,
+          "step": 5.0,
+          "description": "Low-shelf corner frequency for the optional bass boost."
+        }
+      ],
+      "citation": "Toole, F. E. (2017). Sound Reproduction: The Acoustics and Psychoacoustics of Loudspeakers and Rooms (3rd ed.). Routledge / AES Presents."
+    },
+    {
+      "name": "welti_sub",
+      "title": "Welti subwoofer band",
+      "description": "Sub-band low-shelf with corner at the crossover frequency.",
+      "params": [
+        {
+          "name": "shelf_level",
+          "kind": "number",
+          "min": 0.0,
+          "max": 14.0,
+          "default": 6.0,
+          "step": 0.5,
+          "description": "Sub-band low-shelf gain in dB."
+        },
+        {
+          "name": "crossover_hz",
+          "kind": "number",
+          "min": 40.0,
+          "max": 200.0,
+          "default": 80.0,
+          "step": 1.0,
+          "description": "Shelf corner frequency, matching your sub-to-mains crossover. Above this frequency the shelf has rolled down toward 0 dB."
+        }
+      ],
+      "citation": "Welti, T. & Devantier, A. (2006). 'Low-Frequency Optimization Using Multiple Subwoofers.' J. AES 54(5). See also Welti, 'Subwoofers: Optimum Number and Locations' (Harman International)."
+    },
+    {
+      "name": "flat",
+      "title": "Flat / Unity",
+      "description": "Zero dB at every frequency. Useful as a baseline before transforms.",
+      "params": [],
+      "citation": "Reference baseline (no source)."
+    },
+    {
+      "name": "breakpoints",
+      "title": "Raw breakpoints",
+      "description": "User-supplied list of (Hz, dB) pairs interpolated log-linearly.",
+      "params": [
+        {
+          "name": "points",
+          "kind": "breakpoints",
+          "default": [
+            [
+              20.0,
+              0.0
+            ],
+            [
+              20000.0,
+              0.0
+            ]
+          ],
+          "description": "List of (freq_hz, gain_db) pairs, strictly sorted by frequency."
+        }
+      ],
+      "citation": "User-defined."
+    }
+  ],
+  "transforms": [
+    {
+      "name": "gain",
+      "title": "Band gain",
+      "description": "Add (or subtract) a fixed dB to a band, with cosine-tapered edges.",
+      "params": [
+        {
+          "name": "low_hz",
+          "kind": "number",
+          "min": 20.0,
+          "max": 20000.0,
+          "default": 1000.0,
+          "step": 10.0,
+          "description": "Lower edge of the band, in Hz."
+        },
+        {
+          "name": "high_hz",
+          "kind": "number",
+          "min": 20.0,
+          "max": 20000.0,
+          "default": 1000.0,
+          "step": 10.0,
+          "description": "Upper edge of the band, in Hz."
+        },
+        {
+          "name": "gain_db",
+          "kind": "number",
+          "min": -24.0,
+          "max": 24.0,
+          "default": 0.0,
+          "step": 1.0,
+          "description": "Gain (positive) or cut (negative) in dB."
+        },
+        {
+          "name": "taper",
+          "kind": "number",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.16666666666666666,
+          "step": 0.05,
+          "description": "Edge taper width in octaves (0 = hard rectangular band)."
+        }
+      ]
+    },
+    {
+      "name": "peq",
+      "title": "Parametric peak EQ",
+      "description": "Bell-shaped peak/cut at a given frequency and Q (RBJ biquad).",
+      "params": [
+        {
+          "name": "freq",
+          "kind": "number",
+          "min": 20.0,
+          "max": 20000.0,
+          "default": 1000.0,
+          "step": 10.0,
+          "description": "Center frequency in Hz."
+        },
+        {
+          "name": "gain_db",
+          "kind": "number",
+          "min": -24.0,
+          "max": 24.0,
+          "default": 0.0,
+          "step": 1.0,
+          "description": "Peak gain in dB."
+        },
+        {
+          "name": "q",
+          "kind": "number",
+          "min": 0.0,
+          "max": 10.0,
+          "default": 1.0,
+          "step": 0.5,
+          "description": "Quality factor: higher = narrower peak."
+        }
+      ]
+    },
+    {
+      "name": "shelf",
+      "title": "Shelf",
+      "description": "First-order low or high shelf added on top of the current curve.",
+      "params": [
+        {
+          "name": "type",
+          "kind": "enum",
+          "enumValues": [
+            "low",
+            "high"
+          ],
+          "default": "low",
+          "description": "'low' for bass shelf, 'high' for treble shelf."
+        },
+        {
+          "name": "corner",
+          "kind": "number",
+          "min": 20.0,
+          "max": 20000.0,
+          "default": 200.0,
+          "step": 10.0,
+          "description": "Shelf corner frequency in Hz."
+        },
+        {
+          "name": "gain_db",
+          "kind": "number",
+          "min": -18.0,
+          "max": 18.0,
+          "default": 0.0,
+          "step": 1.0,
+          "description": "Shelf gain in dB."
+        }
+      ]
+    },
+    {
+      "name": "rolloff",
+      "title": "Low-end rolloff",
+      "description": "Nth-order Butterworth high-pass magnitude added to the curve.",
+      "params": [
+        {
+          "name": "freq",
+          "kind": "number",
+          "min": 20.0,
+          "max": 20000.0,
+          "default": 1000.0,
+          "step": 10.0,
+          "description": "Cutoff frequency in Hz (-3 dB point)."
+        },
+        {
+          "name": "order",
+          "kind": "integer",
+          "min": 1.0,
+          "max": 8.0,
+          "default": 2.0,
+          "step": 1.0,
+          "description": "Butterworth order; 2 is a typical safe default."
+        }
+      ]
+    },
+    {
+      "name": "tilt",
+      "title": "Linear tilt",
+      "description": "Linear dB/octave slope across the spectrum, anchored to a chosen Hz.",
+      "params": [
+        {
+          "name": "db_per_octave",
+          "kind": "number",
+          "min": -3.0,
+          "max": 3.0,
+          "default": 0.0,
+          "step": 0.5,
+          "description": "Tilt slope in dB per octave (negative = darker)."
+        },
+        {
+          "name": "anchor_hz",
+          "kind": "number",
+          "min": 20.0,
+          "max": 20000.0,
+          "default": 1000.0,
+          "step": 10.0,
+          "description": "Frequency at which the tilt has zero effect."
+        }
+      ]
+    }
+  ]
+}

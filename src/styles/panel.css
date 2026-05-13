@@ -1,0 +1,129 @@
+/* Panel shell — used by both Recipe (left) and Output (right) columns.
+   Provides the consistent vertical rhythm: header → field-groups separated
+   by dividers. Also houses the A/B slot toggle and the eyebrow label primitive. */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--grid);
+  border-radius: var(--r-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--grid);
+}
+
+.panel-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.panel-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.header-action {
+  width: 1.6rem;
+  height: 1.6rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.12s, background 0.12s;
+}
+
+.header-action:hover {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+/* Each top-level section inside a panel gets a divider above it (except
+   the first one). Gives a consistent vertical rhythm. */
+.panel > .field-group + .field-group {
+  padding-top: var(--space-4);
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--grid);
+}
+
+.panel-title {
+  font-size: var(--fs-panel-title);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Slider-row grids sit a little tighter — they're "data dense" rows */
+.field-group .controls-grid { row-gap: 0.6rem; }
+
+.row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+/* Unified uppercase section label primitive. */
+.eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* A/B slot toggle (segmented control in panel header). */
+.slot-toggle {
+  display: inline-flex;
+  padding: 2px;
+  background: var(--bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--r-md);
+}
+
+.slot-btn {
+  width: 1.85rem;
+  height: 1.6rem;
+  border-radius: var(--r-sm);
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: ui-monospace, "SF Mono", monospace;
+  transition: background 0.12s, color 0.12s;
+}
+
+.slot-btn:hover {
+  color: var(--fg);
+}
+
+.slot-btn[data-slot="A"].active {
+  background: var(--curve);
+  color: var(--accent-fg);
+}
+
+.slot-btn[data-slot="B"].active {
+  background: var(--curve-b);
+  color: var(--accent-fg);
+}

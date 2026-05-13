@@ -1,0 +1,55 @@
+/* Design tokens — palette, type scale, spacing, radii. Everything else
+   references these via var(); never hard-code values in other style files. */
+:root {
+  color-scheme: light dark;
+  font-family: -apple-system, "Helvetica Neue", system-ui, sans-serif;
+
+  --bg: #fafaf8;
+  --fg: #1a1a1a;
+  --muted: #6b6b6b;
+  --accent: #d97757;
+  --accent-fg: #fff;
+  --curve: #d97757;
+  --curve-b: #4a8fbf;
+  --panel: #fff;
+  --input-bg: #fff;
+  --input-border: #e2dccd;
+  --grid: #e2dccd;
+  --danger: #e53935;
+  --fs-eyebrow: 0.7rem;
+  --fs-label: 0.85rem;
+  --fs-value: 0.85rem;
+  --fs-body: 0.85rem;
+  --fs-help: 0.78rem;
+  --fs-h1: 1.5rem;
+  --fs-panel-title: 0.95rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 10px;
+  --r-pill: 999px;
+  --ls-eyebrow: 0.08em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a1a;
+    --fg: #ededed;
+    --muted: #999;
+    --grid: #333;
+    --panel: #222;
+    --input-bg: #2a2a2a;
+    --input-border: #3a3a3a;
+    --curve-b: #6ba8d8;
+  }
+}
+
+/* Slot B re-skins the entire accent system. Set on body so descendants pick
+   up the new --accent automatically. */
+body[data-active-slot="B"] {
+  --accent: var(--curve-b);
+}

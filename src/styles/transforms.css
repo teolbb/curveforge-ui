@@ -1,0 +1,74 @@
+/* Transforms list — stacked cards under the recipe's base curve. Each card
+   has a header (name + reorder/delete icons) and a body of param controls. */
+
+.transforms-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.no-transforms {
+  color: var(--muted);
+  font-size: var(--fs-help);
+  font-style: italic;
+  margin: 0;
+}
+
+.transform-card {
+  background: var(--bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--r-md);
+  padding: var(--space-2) var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.transform-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--fs-label);
+  font-weight: 600;
+}
+
+.transform-actions {
+  display: flex;
+  gap: 0.15rem;
+}
+
+/* Small square icon-only button — used everywhere we need a compact action
+   (reorder, delete, etc.). Lives here because it's most-used by transforms,
+   but is structurally generic. */
+.icon-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.12s, border-color 0.12s, background 0.12s;
+}
+
+.icon-btn:hover:not(:disabled) {
+  color: var(--fg);
+  background: var(--input-bg);
+  border-color: var(--input-border);
+}
+
+.icon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.icon-btn.delete:hover:not(:disabled) {
+  color: var(--danger);
+  border-color: var(--danger);
+}
