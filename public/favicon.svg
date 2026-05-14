@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="curveforge">
+  <rect width="24" height="24" rx="5" fill="#d97757"/>
+  <path d="M 4,8 C 6,8 8,8 10,11 C 12,14 14,16 20,17"
+        fill="none" stroke="#fff" stroke-width="2.6"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
