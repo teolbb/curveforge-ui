@@ -342,6 +342,10 @@ const Header = (): Renderable => html`<header>
     Design Dirac Live target curves in the browser.
     <a href="https://pypi.org/project/curveforge/" target="_blank">curveforge</a> via Pyodide.
   </p>
+  <p class="tagline">
+    <a href="https://github.com/teolbb/curveforge-ui" target="_blank">Source on GitHub</a>
+    · by <a href="https://github.com/teolbb" target="_blank">Téo Le Bras</a>
+  </p>
 </header>`;
 
 export const App = (): Renderable => html`<${Fragment}>
